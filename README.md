@@ -65,6 +65,11 @@ using Pkg
 Pkg.develop(url = "https://github.com/originalsouth/Novempuss.git")
 ```
 
+Install extra dependencies:
+```
+] add BenchmarkTools CairoMakie GraphMakie GraphPlot PlotGraphviz Pluto ProfileView Revise SimpleWeightedGraphs Test
+```
+
 ## Basic Usage
 To be done. See tests and examples for now.
 
@@ -74,8 +79,8 @@ To be done. See tests and examples for now.
 - [x] Create `LogicalGraph` structure as database structure to store `Graphlets` with common routines
     - [x] Allow addition/deletion of nodes and rules
     - [x] Find node's `Graphlet`'s
-    - [ ] Find neighbors of a node (up to n-th order) [partially supported]
-    - [ ] Find shortest path between nodes (if any) [partially supported]
+    - [x] Find neighbors of a node (up to n-th order)
+    - [x] Find shortest path between nodes (if any)
     - [x] Add `Graphlet` merge caching optimizations
     - [x] Add transaction history
 - [ ] Extend with optional use of parallelism CPU/GPU

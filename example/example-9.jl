@@ -109,6 +109,24 @@ push!(kitchen, Food[🥭(), 🌶️(), 🍋()])
 # ╔═╡ 62e71e33-9a48-43da-a76e-32b6abcb173b
 plot(Novempuss.current(kitchen))
 
+# ╔═╡ 298b405d-3803-47a5-aa75-9b4ce1794632
+delete!(kitchen, Food[🥔()])
+
+# ╔═╡ 2c611e46-338d-4475-9684-89af8f5b61fc
+plot(Novempuss.current(kitchen))
+
+# ╔═╡ 8c4828f3-7514-4298-8016-660298b40eb9
+Novempuss.rootfind(kitchen, 🥙())
+
+# ╔═╡ b2fcf6ed-8c7a-4fc3-b44f-f129692a3bad
+Novempuss.rootfindall(kitchen, 🥙())
+
+# ╔═╡ 384ec12a-4410-48c8-9d6b-2dce84848dd2
+Novempuss.rootfind(kitchen, 🥗())
+
+# ╔═╡ 3f835569-9126-4b69-82b0-37f3fbea898f
+Novempuss.rootfindall(kitchen, 🥗())
+
 # ╔═╡ Cell order:
 # ╠═c314ddec-df90-11ee-32ec-a3e35021b851
 # ╠═7761c99d-2e7a-4cfe-9ae2-33ec9ce1ca12
@@ -132,3 +150,9 @@ plot(Novempuss.current(kitchen))
 # ╠═9e65df60-b4a5-4f35-99a0-e760352c8dc8
 # ╠═7585e718-3d67-452a-b069-9bfb8761e0c1
 # ╠═62e71e33-9a48-43da-a76e-32b6abcb173b
+# ╠═298b405d-3803-47a5-aa75-9b4ce1794632
+# ╠═2c611e46-338d-4475-9684-89af8f5b61fc
+# ╠═8c4828f3-7514-4298-8016-660298b40eb9
+# ╠═b2fcf6ed-8c7a-4fc3-b44f-f129692a3bad
+# ╠═384ec12a-4410-48c8-9d6b-2dce84848dd2
+# ╠═3f835569-9126-4b69-82b0-37f3fbea898f

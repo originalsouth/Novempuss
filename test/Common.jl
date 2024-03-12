@@ -1,6 +1,8 @@
 using Test
 using Novempuss
 
+permeq(x, y) = Set(x) == Set(y)
+
 test_ms_f(x::Int64) = x
 test_ms_f(x::Float64) = pi*x
 
@@ -45,7 +47,6 @@ function collatz(x::BigInt)
 end
 
 concat(x::String, y::String) = count(==('|'), x * "|" * y) < 2 ? x * "|" * y : nothing
-permeq(x, y) = all(in.(x, Ref(y)))
 loop_collatz(x::BigInt) = iseven(x) ? x/2 : 3*x+1
 
 function algealsystem(x::A)
@@ -91,3 +92,5 @@ recipe(_::🧅, _::🫘, _::🧄, _::🥬, _::🌶️) = 🧆()
 recipe(_::🥬, _::🥒, _::🍅, _::🍋, _::🫒) = 🥗()
 recipe(_::🥭, _::🌶️, _::🍋) = 🍲()
 recipe(_::🍟, _::🧆, _::🍲, _::🥗, _::🫓) = 🥙()
+
+Dcomposer(a::A, b::B, c::C) = D(value(a)*value(b)*value(c))

@@ -4,9 +4,9 @@ name(met::Method) = met.name
 mod(met::Method) = met.module
 args(met::Method) = fieldcount(met.sig) - 1
 
-Base.sign(met::Method) = Tuple{fieldtypes(met.sig)[2:end]...}
+Base.sign(met::Method) = Tuple{Vararg}{fieldtypes(met.sig)[2:end]...}
 Base.run(met::Method) = getfield(mod(met), name(met))
-Base.run(met::Method, args::T) where T <: Tuple = run(met)(args...)
+Base.run(met::Method, args::T) where T<:Tuple{Vararg} = run(met)(args...)
 
 export MethodSet
 
@@ -71,7 +71,7 @@ function Base.delete!(ms::MethodSet, f::Function)
 	return ms
 end
 
-Base.run(ms::MethodSet, arg::T) where T<:Tuple = collect(Iterators.map(x -> run(x, arg), ms[T]))
-Base.run(ms::MethodSet, args::Vector{T}) where T<:Tuple = [run(ms, arg) for arg in args]
+Base.run(ms::MethodSet, arg::T) where T<:Tuple{Vararg} = [run(met, arg) for met in ms[T]]
+Base.run(ms::MethodSet, args::Vector{T}) where T<:Tuple{Vararg} = [run(ms, arg) for arg in args]
 
 end

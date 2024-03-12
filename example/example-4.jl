@@ -26,7 +26,13 @@ using SimpleWeightedGraphs
 using PlotGraphviz
 
 # ╔═╡ 48e1ed78-db44-4060-96b8-e0284698bedf
-collatz(x::BigInt) = iseven(x) ? x/2 : 3*x+1
+begin
+	N = 0
+	function collatz(x::BigInt)
+		global N += 1
+		return iseven(x) ? x/2 : 3*x+1
+	end
+end
 
 # ╔═╡ 39846268-a986-4bdf-947a-0fddd18ebeff
 ms = Novempuss.MethodSet(collatz)
@@ -36,6 +42,9 @@ graphlets = map(x -> Novempuss.Graphlet{BigInt}(BigInt(x), ms), 1:2^12)
 
 # ╔═╡ aa4064f1-cd26-4aa9-9873-7c78303c857e
 gl = Novempuss._simple_merge(graphlets)
+
+# ╔═╡ a9728e86-7ab7-4fc7-bcbe-3d0450a67749
+N
 
 # ╔═╡ a1efe45a-3d63-4f0a-b677-971cb2bb54d9
 begin
@@ -60,4 +69,5 @@ end
 # ╠═39846268-a986-4bdf-947a-0fddd18ebeff
 # ╠═eb7a22b6-53b6-46fe-8daf-0d3de15d5a4d
 # ╠═aa4064f1-cd26-4aa9-9873-7c78303c857e
+# ╠═a9728e86-7ab7-4fc7-bcbe-3d0450a67749
 # ╠═a1efe45a-3d63-4f0a-b677-971cb2bb54d9

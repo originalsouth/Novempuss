@@ -24,13 +24,13 @@
     @testset "Linear Inference" begin
         ms = Novempuss.MethodSet(rule)
         g1 = Novempuss.Graphlet{Letter}(A(), ms)
-        @test value.(collect(Novempuss.nodes(g1))) == ["A", "A|B", "A|B|C"]
+        @test permeq(value.(collect(Novempuss.nodes(g1))), ["A", "A|B", "A|B|C"])
         @test size(g1) == (3, 2)
         g2 = Novempuss.Graphlet{Letter}(B(), ms)
-        @test value.(collect(Novempuss.nodes(g2))) == ["B", "B|C"]
+        @test permeq(value.(collect(Novempuss.nodes(g2))), ["B", "B|C"])
         @test size(g2) == (2, 1)
         g3 = Novempuss.Graphlet{Letter}(C(), ms)
-        @test value.(collect(Novempuss.nodes(g3))) == ["C"]
+        @test permeq(value.(collect(Novempuss.nodes(g3))), ["C"])
         @test size(g3) == (1, 0)
     end
 
@@ -51,8 +51,8 @@
 
     @testset "Circular Inference" begin
         gl = Novempuss.Graphlet{Letter}(A(), Novempuss.MethodSet(circular_rule))
-        nd = collect(Novempuss.nodes(gl))
-        @test value.(nd) == ["A", "A|B", "A|B|C"]
+        nd = [A("A"), B("A|B"), C("A|B|C")]
+        @test permeq(Novempuss.nodes(gl), nd)
         @test size(gl) == (3, 3)
         @test Novempuss.Graphs.is_cyclic(Novempuss.graph(gl))
         for i in 1:length(nd)
